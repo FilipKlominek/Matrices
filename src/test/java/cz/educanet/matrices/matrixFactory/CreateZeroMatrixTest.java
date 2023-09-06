@@ -1,5 +1,8 @@
-package cz.educanet.matrices;
+package cz.educanet.matrices.matrixFactory;
 
+import cz.educanet.matrices.IMatrix;
+import cz.educanet.matrices.IMatrixFactory;
+import cz.educanet.matrices.MatrixFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

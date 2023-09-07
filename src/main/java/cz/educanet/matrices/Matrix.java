@@ -8,35 +8,51 @@ public class Matrix implements IMatrix {
         this.rawArray = rawArray;
     }
 
-    /**
-     * TODO: Implement
-     */
     @Override
     public IMatrix times(IMatrix matrix) {
-        return null;
+        if (this.getColumns() != matrix.getRows()) return null;
+        double[][] result = new double[this.getRows()][matrix.getColumns()];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[i].length; j++) {
+                result[i][j] = 0;
+                for (int k = 0; k < this.getColumns(); k++) {
+                    result[i][j] += this.get(i, k) * matrix.get(k, j);
+                }
+            }
+        }
+        return new Matrix(result);
     }
 
-    /**
-     * TODO: Implement
-     */
     @Override
     public IMatrix times(Number scalar) {
-        return null;
+        double[][] result = new double[this.getRows()][this.getColumns()];
+        for (int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getColumns(); j++) {
+                result[i][j] = this.get(i, j) * scalar.doubleValue();
+            }
+        }
+        return new Matrix(result);
     }
 
-    /**
-     * TODO: Implement
-     */
     @Override
     public IMatrix add(IMatrix matrix) {
-        return null;
+        if (this.getRows() != matrix.getRows() || this.getColumns() != matrix.getColumns())
+            return null; //returns null if dimensions do not match
+        double[][] result = new double[this.getRows()][this.getColumns()];
+        for (int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getColumns(); j++) {
+                result[i][j] = this.get(i, j) + matrix.get(i, j);
+            }
+        }
+        return new Matrix(result);
+
     }
 
     @Override
     public IMatrix transpose() {
         double[][] transpose = new double[this.getColumns()][this.getRows()];
-        for (int i = 0; i < this.rawArray.length; i++) {
-            for (int j = 0; j < this.rawArray[i].length; j++) {
+        for (int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getColumns(); j++) {
                 transpose[j][i] = this.rawArray[i][j];
             }
         }
@@ -74,8 +90,8 @@ public class Matrix implements IMatrix {
     @Override
     public boolean isDiagonal() {
         if (!this.isSquare()) return false;
-        for (int i = 0; i < this.rawArray.length; i++) {
-            for (int j = 0; j < this.rawArray[i].length; j++) {
+        for (int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getColumns(); j++) {
                 if (i != j && this.rawArray[i][j] != 0) return false;
             }
         }
@@ -86,7 +102,7 @@ public class Matrix implements IMatrix {
     public Number getTrace() {
         if (!isSquare()) return null;
         double trace = 0;
-        for (int i = 0; i < this.rawArray.length; i++) {
+        for (int i = 0; i < this.getRows(); i++) {
             trace += this.rawArray[i][i];
         }
         return trace;

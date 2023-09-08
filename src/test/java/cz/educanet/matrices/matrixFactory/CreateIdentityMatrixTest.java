@@ -35,28 +35,28 @@ public class CreateIdentityMatrixTest {
         int[] lengths = {1, 2, 3, 4};
         double[][][] matrices = {
                 {
-                        {0}
+                        {1}
                 },
                 {
-                        {0, 0},
-                        {0, 0},
+                        {1, 0},
+                        {0, 1},
                 },
                 {
-                        {0, 0, 0},
-                        {0, 0, 0},
-                        {0, 0, 0}
+                        {1, 0, 0},
+                        {0, 1, 0},
+                        {0, 0, 1}
                 },
                 {
-                        {0, 0, 0, 0},
-                        {0, 0, 0, 0},
-                        {0, 0, 0, 0},
-                        {0, 0, 0, 0}
+                        {1, 0, 0, 0},
+                        {0, 1, 0, 0},
+                        {0, 0, 1, 0},
+                        {0, 0, 0, 1}
                 }
         };
         for (int i = 0; i < lengths.length; i++) {
             Matrix identity = (Matrix) MatrixFactory.instance.createIdentity(lengths[i]);
-            for (int j = 0; j < matrices.length; j++) {
-                for (int k = 0; k < matrices[j].length; k++) {
+            for (int j = 0; j < matrices[i].length; j++) {
+                for (int k = 0; k < matrices[i][j].length; k++) {
                     Assertions.assertEquals(matrices[i][j][k], identity.get(j, k));
                 }
             }

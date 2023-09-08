@@ -33,8 +33,8 @@ public class CreateDiagonalMatrixTest {
         };
         for (int i = 0; i < diagonals.length; i++) {
             Matrix diagonal = (Matrix) MatrixFactory.instance.createDiagonal(diagonals[i]);
-            for (int j = 0; j < matrices.length; j++) {
-                for (int k = 0; k < matrices[j].length; k++) {
+            for (int j = 0; j < matrices[i].length; j++) {
+                for (int k = 0; k < matrices[i][j].length; k++) {
                     Assertions.assertEquals(matrices[i][j][k], diagonal.get(j, k));
                 }
             }

@@ -47,7 +47,7 @@ public class GetTest {
     }
 
     @Test
-    public void should_GetCorrect_Double() {
+    public void should_Get_CorrectDouble() {
         double[][] values = {
                 {9d, -5d, 0d},
                 {0d, 1.35d, -0.56d}

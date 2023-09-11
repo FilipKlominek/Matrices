@@ -24,7 +24,7 @@ public class TransposeTest {
                         {9}
                 }
         };
-        double[][][] transposedMatrices = {
+        double[][][] results = {
                 {
                         {1, 0},
                         {3, -9},
@@ -42,8 +42,13 @@ public class TransposeTest {
                 }
         };
         for (int i = 0; i < matrices.length; i++) {
-            Assertions.assertEquals(new Matrix(matrices[i]).transpose(), new Matrix(transposedMatrices[i]));
+            Matrix transposedMatrix = (Matrix) new Matrix(matrices[i]).transpose();
+            for (int j = 0; j < matrices[i].length; j++) {
+                for (int k = 0; k < matrices[i][j].length; k++) {
+                    Assertions.assertEquals(transposedMatrix.get(k, j), results[i][k][j]);
+                    //what
+                }
+            }
         }
-
     }
 }

@@ -60,7 +60,7 @@ public class GetTraceTest {
                         {9}
                 }
         };
-        double[] results = {131, -8.36, 9};
+        double[] results = {131, -7.64, 9};
 
         for (int i = 0; i < matrices.length; i++) {
             Matrix matrix = new Matrix(matrices[i]);

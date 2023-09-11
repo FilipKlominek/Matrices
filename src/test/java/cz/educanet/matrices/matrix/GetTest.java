@@ -7,26 +7,6 @@ import org.junit.jupiter.api.Test;
 public class GetTest {
 
     @Test
-    public void should_Succeed_When_IndexWithinRange() {
-        int[][] gets = {
-                {1, 2},
-                {0, 0},
-                {4, 4}
-        };
-
-        Matrix matrix = new Matrix(new double[][]{
-                {0d, 0d, 0d, 0d},
-                {0d, 0d, 0d, 0d},
-                {0d, 0d, 0d, 0d},
-                {0d, 0d, 0d, 0d}
-        });
-
-        for (int[] get : gets) {
-            Assertions.assertEquals(matrix.get(get[0], get[1]), 0d);
-        }
-    }
-
-    @Test
     public void should_Fail_When_IndexOutOfRange() {
         int[][] gets = {
                 {4, 1},

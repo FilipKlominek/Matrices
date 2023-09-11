@@ -62,20 +62,29 @@ public class Matrix implements IMatrix {
     @Override
     public double determinant() {
         if (!this.isSquare()) return Double.NaN;
-
+//TODO: it's completely wrong, this is only for 3×3
         double determinant = 0;
         int length = this.getRows();
 
         for (int i = 0; i < length; i++) {
+            double product = 1;
             for (int j = 0; j < length; j++) {
-                determinant += this.rawArray[Math.floorMod(j + i, length)][j];
+                int mod = Math.floorMod(j + i, length);
+                product *= this.rawArray[mod][j];
+                System.out.println();
             }
+            determinant += product;
         }
 
         for (int i = 0; i < length; i++) {
+            double product = 1;
             for (int j = length - 1; j >= 0; j--) {
-                determinant -= this.rawArray[Math.floorMod(j + i, length)][j];
+                int reverse = length - (j + 1);
+                int mod = Math.floorMod(reverse + i, length);
+                product *= this.rawArray[mod][j];
+                System.out.println();
             }
+            determinant -= product;
         }
 
         return determinant;

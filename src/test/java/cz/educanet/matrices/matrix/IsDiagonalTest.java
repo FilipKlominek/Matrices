@@ -39,9 +39,6 @@ public class IsDiagonalTest {
                 {
                         {1.36, 3},
                         {-9, -9}
-                },
-                {
-                        {9}
                 }
         };
         for (double[][] matrix : matrices) {
@@ -49,7 +46,7 @@ public class IsDiagonalTest {
         }
     }
     @Test
-    public void should_Return_False_When_Diagonal() {
+    public void should_Return_True_When_Diagonal() {
         double[][][] matrices = {
                 {
                         {3, 0, 0, 0},

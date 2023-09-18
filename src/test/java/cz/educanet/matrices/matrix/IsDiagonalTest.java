@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class IsDiagonalTest {
     @Test
-    public void should_Return_False_When_Not_Square() {
+    public void should_Return_False_When_NotSquare() {
         double[][][] matrices = {
                 {
                         {1, 3, 4},
@@ -23,7 +23,7 @@ public class IsDiagonalTest {
     }
 
     @Test
-    public void should_Return_False_When_Not_Diagonal() {
+    public void should_Return_False_When_NotDiagonal() {
         double[][][] matrices = {
                 {
                         {3, 0, 0, -0.89},

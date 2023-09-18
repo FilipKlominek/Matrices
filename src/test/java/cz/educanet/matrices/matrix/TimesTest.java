@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class TimesTest {
     @Test
-    public void should_Return_Null_When_ColumnsOfA_Not_EqualTo_RowsOfB() {
+    public void should_Return_Null_When_ColumnsOfANotEqualToRowsOfB() {
         double[][][] matricesA = {
                 {
                         {1, 3, 4},
@@ -24,8 +24,7 @@ public class TimesTest {
         double[][][] matricesB = {
                 {
                         {1, 0},
-                        {3, -9},
-                        {4, 0.6}
+                        {3, -9}
                 },
                 {
                         {1.25, -9},
@@ -33,11 +32,12 @@ public class TimesTest {
                         {-3, 9}
                 },
                 {
-                        {1, 2}
+                        {1, 2},
+                        {2, 1}
                 }
         };
         for (int i = 0; i < matricesA.length; i++) {
-            Assertions.assertNotNull(new Matrix(matricesA[i]).times(new Matrix(matricesB[i])));
+            Assertions.assertNull(new Matrix(matricesA[i]).times(new Matrix(matricesB[i])));
         }
     }
 
@@ -76,17 +76,17 @@ public class TimesTest {
                 },
                 {
                         {0, 8},
-                        {9, -12}
+                        {9, -7}
                 },
                 {
                         {3, 3},
                         {-1.5, -1.5}
                 }
         };
-        for (int i = 0; i < matricesA.length; i++) {
+        for (int i = 0; i < results.length; i++) {
             Matrix multipliedMatrix = (Matrix) new Matrix(matricesA[i]).times(new Matrix(matricesB[i]));
-            for (int j = 0; j < matricesA[i].length; j++) {
-                for (int k = 0; k < matricesA[i][j].length; k++) {
+            for (int j = 0; j < results[i].length; j++) {
+                for (int k = 0; k < results[i][j].length; k++) {
                     Assertions.assertEquals(multipliedMatrix.get(j, k), results[i][j][k]);
                 }
             }

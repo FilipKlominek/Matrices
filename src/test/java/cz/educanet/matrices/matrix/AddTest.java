@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class AddTest {
     @Test
-    public void should_Return_Null_When_Dimensions_Do_Not_Match() {
+    public void should_Return_Null_When_DimensionsDoNotMatch() {
         double[][][] matrices = {
                 {
                         {1, 3, 4},
@@ -46,7 +46,7 @@ public class AddTest {
                 }
         };
         for (int i = 0; i < matrices.length; i++) {
-            Assertions.assertNotNull(new Matrix(matrices[i]).add(new Matrix(addedMatrices[i])));
+            Assertions.assertNull(new Matrix(matrices[i]).add(new Matrix(addedMatrices[i])));
         }
     }
 
@@ -95,7 +95,7 @@ public class AddTest {
                 }
         };
         for (int i = 0; i < matrices.length; i++) {
-            Matrix matrixSum = (Matrix) new Matrix(addedMatrices[i]).add(new Matrix(addedMatrices[i]));
+            Matrix matrixSum = (Matrix) new Matrix(matrices[i]).add(new Matrix(addedMatrices[i]));
             for (int j = 0; j < matrices[i].length; j++) {
                 for (int k = 0; k < matrices[i][j].length; k++) {
                     Assertions.assertEquals(matrixSum.get(j, k), results[i][j][k]);

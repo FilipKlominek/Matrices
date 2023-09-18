@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class DeterminantTest {
     @Test
-    public void should_Return_NaN_When_Not_Square() {
+    public void should_Return_NaN_When_NotSquare() {
         double[][][] matrices = {
                 {
                         {1, 3, 4},
@@ -26,6 +26,13 @@ public class DeterminantTest {
     public void should_Return_Determinant() {
         double[][][] matrices = {
                 {
+                        {-9, 6, 3, 0, 2},
+                        {-7, 0, 7, -1, -1},
+                        {-7, 8, 11, 1, 12},
+                        {7, 0, 7, -21, 6},
+                        {-7, 2, 7, 5, -2},
+                },
+                {
                         {1, 2, 5, 4},
                         {1, 6, 3, 4},
                         {1, 6, 0, 4},
@@ -44,12 +51,9 @@ public class DeterminantTest {
                         {9}
                 }
         };
-        double[] determinants = {-36, -2.75, 15.75, 9};
+        double[] determinants = {53828 ,-36, -2.75, 15.75, 9};
         for (int i = 0; i < matrices.length; i++) {
-            //Assertions.assertEquals(new Matrix(matrices[i]).determinant(), determinants[i]); //TODO: uncomment
-            Matrix m = new Matrix(matrices[i]);
-            double det = m.determinant();
-            System.out.println(det);
+            Assertions.assertEquals(new Matrix(matrices[i]).determinant(), determinants[i]);
         }
     }
 }

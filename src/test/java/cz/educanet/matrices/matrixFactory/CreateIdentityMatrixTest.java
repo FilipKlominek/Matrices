@@ -31,7 +31,7 @@ public class CreateIdentityMatrixTest {
     }
 
     @Test
-    public void should_Create_Identity_Matrix() {
+    public void should_Create_IdentityMatrix() {
         int[] lengths = {1, 2, 3, 4};
         double[][][] matrices = {
                 {

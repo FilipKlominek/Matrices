@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class GetColumnsTest {
     @Test
-    public void should_GetNumberOfRows() {
+    public void should_GetNumberOfColumns() {
         double[][][] matrices = {
                 {
                         {1, 2, 3},

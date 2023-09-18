@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class IsSquareTest {
     @Test
-    public void should_Return_False_When_Not_Square() {
+    public void should_Return_False_When_NotSquare() {
         double[][][] matrices = {
                 {
                         {1, 3, 4},

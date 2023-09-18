@@ -59,10 +59,14 @@ public class Matrix implements IMatrix {
         return MatrixFactory.instance.create(transpose);
     }
 
-    @Override
-    public double determinant() {
-        if (!this.isSquare()) return Double.NaN;
-//TODO: it's completely wrong, this is only for 3×3
+    private double determinant2() {
+        return (this.rawArray[0][0] * this.rawArray[1][1]) - (this.rawArray[0][1] * this.rawArray[1][0]);
+    }
+
+    private double determinant3() {
+        //Implemented the Sarrus method under the assumption that it works for any square matrix.
+        //It doesn't, but it's supposedly the fastest method for 3×3 matrices, so I use it for those.
+
         double determinant = 0;
         int length = this.getRows();
 
@@ -89,6 +93,31 @@ public class Matrix implements IMatrix {
 
         return determinant;
 
+    }
+
+    @Override
+    public double determinant() {
+        if (!this.isSquare()) return Double.NaN;
+
+        if (this.getRows() == 1) return this.rawArray[0][0];
+        if (this.getRows() == 2) return this.determinant2();
+        if (this.getRows() == 3) return this.determinant3();
+
+        double determinant = 0;
+
+        for (int i = 0; i < this.getColumns(); i++) {
+            double[][] subMatrix = new double[this.getRows() - 1][this.getColumns() - 1];
+            for (int j = 0; j < this.getRows() - 1; j++) {
+                for (int k = 0; k < subMatrix[j].length; k++) {
+                    int columnIndex = k;
+                    if (k >= i) columnIndex = k + 1;
+                    subMatrix[j][k] = this.rawArray[j + 1][columnIndex];
+                }
+            }
+            if (i % 2 == 0) determinant += new Matrix(subMatrix).determinant() * this.rawArray[0][i];
+            else  determinant -= new Matrix(subMatrix).determinant() * this.rawArray[0][i];
+        }
+        return determinant;
     }
 
     @Override
